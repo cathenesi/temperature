@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Painel</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.3.0/sockjs.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    </head>
+    <body>
+
+    <div id="msg_div" class="h-100 d-inline-block" style="height: 500px; background-image: url('images/estufa.jpg'); opacity:1; background-repeat: no-repeat; background-position: center top">
+	<table align="center">
+		<tr><td style="opacity:1">
+			<h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s"><p class="text-left">Temperatura: <b id="msgDegrees">-</b> graus</p></h1>
+			<h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s"><p class="text-left">Humidade: <b id="msgHumidity">-</b> %</p></h1>
+		</td></tr>
+	</table>
+    </div> 
+    <script type="text/javascript">
+    function connect() {
+        var stompClient;
+
+        $(document).ready(function() {
+
+            var url = '/listener';
+            var socket = new SockJS(url);
+            stompClient = Stomp.over(socket);
+            stompClient.connect(	            
+	            {}, 
+	            function(frame) {
+	                stompClient.subscribe('/topic', function(msg) {
+	                    $('#msgDegrees').text(JSON.parse(msg.body).temperature);
+	                    $('#msgHumidity').text(JSON.parse(msg.body).humidity);
+	                });
+	
+	            },
+	            function(frame) {
+	            	alert("Ocorreu um erro ao conectar ao Websocket");
+	            }
+            );
+        });            
+    }
+    
+    function set(message) {
+    	alert(obj.humidity);
+    }
+	connect();
+	       
+</script>
+
+</html>

@@ -1,0 +1,15 @@
+spring:
+ application:
+   name: home-temperature
+
+server:
+  port: 9052
+
+messages:
+  basename: messages
+  default:
+    country: BR
+    language: PT
+    encoding: UTF-8
+
+#mysql.password: knJiCzDZ0pbTG7UAGPPk
