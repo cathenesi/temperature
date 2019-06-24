@@ -2,7 +2,7 @@ spring:
   application:
     name: home-temperature
   redis:
-    host: temperature.kn9v0u.0001.use1.cache.amazonaws.com
+    host: redis-trabalho-fiap.kn9v0u.0001.use1.cache.amazonaws.com
     port: 6379
     timeout: 1000
     lettuce:

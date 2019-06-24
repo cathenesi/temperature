@@ -17,3 +17,7 @@ http://localhost:9052/swagger-ui.html
 A temperatura e humidade é registrada por meio de um programa Python que roda eum um Raspberry Pi.
 
 O programa se encontra no diretório "python".
+
+## Front-end Amazon
+http://ec2-3-87-239-244.compute-1.amazonaws.com:9052/
+http://ec2-3-87-239-244.compute-1.amazonaws.com:9052/swagger-ui.html
