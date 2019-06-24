@@ -99,5 +99,5 @@ task dockerImage(type: Docker, dependsOn: 'build') {
     exposePort 9052
     addFile("build/libs/${rootProject.name}-${version}.jar","/tmp")
     workingDir("/tmp")
-    entryPoint(["java","-jar","-Dspring.profiles.active=prod","${rootProject.name}-${version}.jar"])
+    entryPoint(["java","-Dspring.profiles.active=prod","-jar","${rootProject.name}-${version}.jar"])
 }
