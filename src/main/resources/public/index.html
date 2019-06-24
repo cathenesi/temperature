@@ -12,7 +12,7 @@
     </head>
     <body>
 
-    <div id="msg_div" class="h-100 d-inline-block" style="height: 500px; background-image: url('images/estufa.jpg'); opacity:1; background-repeat: no-repeat; background-position: center top">
+    <div id="msg_div" class="h-100 d-inline-block" style="height: 500px; background-image: url('https://cathenesi-bucket.s3.amazonaws.com/estufa.jpg'); opacity:1; background-repeat: no-repeat; background-position: center top">
 	<table align="center">
 		<tr><td style="opacity:1">
 			<h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s"><p class="text-left">Temperatura: <b id="msgDegrees">-</b> graus</p></h1>
@@ -21,12 +21,14 @@
 	</table>
     </div> 
     <script type="text/javascript">
+
+   	
     function connect() {
         var stompClient;
+   		var url = '/listener';
 
         $(document).ready(function() {
 
-            var url = '/listener';
             var socket = new SockJS(url);
             stompClient = Stomp.over(socket);
             stompClient.connect(	            
@@ -42,14 +44,12 @@
 	            	alert("Ocorreu um erro ao conectar ao Websocket");
 	            }
             );
-        });            
+        });
+        $.get(url);
     }
     
-    function set(message) {
-    	alert(obj.humidity);
-    }
 	connect();
-	       
+	
 </script>
 
 </html>

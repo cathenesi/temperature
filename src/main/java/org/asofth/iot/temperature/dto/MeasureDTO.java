@@ -34,6 +34,11 @@ public class MeasureDTO {
 
 	private Date date = new Date();
 
+	public static MeasureDTO fromJson(String asJson) throws Exception {
+
+		return new ObjectMapper().readValue(asJson, MeasureDTO.class);
+	}
+
 	@Override
 	public String toString() {
 		try {

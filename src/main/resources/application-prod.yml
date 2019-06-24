@@ -2,7 +2,7 @@ spring:
   application:
     name: home-temperature
   redis:
-    host: localhost
+    host: default-redis-ro.kn9v0u.ng.0001.use1.cache.amazonaws.com
     port: 6379
     timeout: 1000
     lettuce:

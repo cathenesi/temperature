@@ -4,6 +4,7 @@ import org.asofth.iot.temperature.dto.MeasureDTO;
 import org.asofth.iot.temperature.service.EventPublisherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,17 +23,11 @@ public class TemperatureController {
 	@Autowired
 	private EventPublisherService service;
 
-//	long temp = 30;
-//	@Scheduled(fixedDelay = 1000)
-//	public void testCollecting() {
-//		if (temp == 30) {
-//			temp = 31;
-//		} else {
-//			temp = 30;
-//		}
-//		this.collect(new MeasureDTO(BigDecimal.valueOf(temp), BigDecimal.valueOf(70L), new Date()));
-//	}
-
+	@GetMapping
+	public void start() throws Exception {
+		service.start();
+	}
+	
 	@PostMapping
 	public void collect(@RequestBody(required = true) MeasureDTO sample) {
 
