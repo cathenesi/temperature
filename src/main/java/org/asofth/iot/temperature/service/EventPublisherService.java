@@ -15,7 +15,7 @@ public class EventPublisherService {
 	@Autowired
 	private EventRepository repository;
 	
-	public void start() throws Exception {
+	public void last() throws Exception {
 		this.publish(repository.findLast());
 	}
 

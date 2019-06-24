@@ -21,7 +21,6 @@
 	</table>
     </div> 
     <script type="text/javascript">
-
    	
     function connect() {
         var stompClient;
@@ -38,7 +37,7 @@
 	                    $('#msgDegrees').text(JSON.parse(msg.body).temperature);
 	                    $('#msgHumidity').text(JSON.parse(msg.body).humidity);
 	                });
-	
+    				$.get(url);
 	            },
 	            function(frame) {
 	            	alert("Ocorreu um erro ao conectar ao Websocket");
@@ -46,8 +45,9 @@
             );
         });
     }
-    
+        
 	connect();
+	
 	
 </script>
 

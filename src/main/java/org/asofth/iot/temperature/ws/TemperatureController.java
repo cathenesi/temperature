@@ -24,8 +24,8 @@ public class TemperatureController {
 	private EventPublisherService service;
 
 	@GetMapping
-	public void start() throws Exception {
-		service.start();
+	public void last() throws Exception {
+		service.last();
 	}
 	
 	@PostMapping
