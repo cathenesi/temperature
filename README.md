@@ -18,6 +18,8 @@ A temperatura e humidade é registrada por meio de um programa Python que roda e
 
 O programa se encontra no diretório "python".
 
-## Front-end Amazon
+## Front-end na Amazon
 http://ec2-3-87-239-244.compute-1.amazonaws.com:9052/
+
+## Swagger na Amazon
 http://ec2-3-87-239-244.compute-1.amazonaws.com:9052/swagger-ui.html
