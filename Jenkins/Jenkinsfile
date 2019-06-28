@@ -6,11 +6,8 @@ node('master'){
             deleteDir()
         }
 
-        stage('Clonar repositorio'){
-            dir('/home/ubuntu/github/temperature'){
-                sh 'sudo git stash' 
-                sh 'sudo git pull' 
-            }
+        stage('Baixar repositorio'){
+            checkout scm        
         }
 
         stage('Build do projeto'){
