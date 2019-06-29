@@ -22,7 +22,12 @@ http://ec2-3-88-52-204.compute-1.amazonaws.com:9052/swagger-ui.html
 - Jenkins roda em uma instância EC2:
 http://ec2-3-88-52-204.compute-1.amazonaws.com:8080
 
-- Pipeline baixa fontes do github, faz o build e sobe container docker, também em instância EC2.
+
+## Pipeline do Jenkins e ambientes
+
+O pipeline do jenkins baixa fontes do github, faz o build e sobe container docker, também em instância EC2.
+
+As configurações de ambiente estão nos arquivos application.yml, incluindo configuração para conexão a recursos de infraestrutura; uma abordagem para rodar a aplicação em vários ambientes, como HOMOLOG, QA, PROD, seria replicar o job do jenkins para cada ambiente, passando os valores dos parâmetros em variáveis da ferramenta.  
 
 
 ## Leitura de temperatura e humidade
