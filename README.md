@@ -28,8 +28,8 @@ https://www.filipeflop.com/blog/temperatura-umidade-dht11-com-raspberry-pi/
 
 
 ## Front-end rodando na AWS
-http://52.87.157.137:9052/
+http://ec2-3-88-52-204.compute-1.amazonaws.com:9052/
 
 
 ## Documentação da API rodando na AWS
-http://52.87.157.137:9052/swagger-ui.html
+http://ec2-3-88-52-204.compute-1.amazonaws.com:9052/swagger-ui.html
