@@ -11,18 +11,18 @@ node('master'){
         }
 
         stage('Build do projeto'){
-             sh './gradlew build' 
-             sh './gradlew docker' 
+             sh 'sudo ./gradlew build' 
+             sh 'sudo ./gradlew docker' 
         }
 
         stage('Stop da aplicação em execucao'){
-            sh 'docker stop temperature'
+            sh 'sudo docker stop temperature'
         }
 
         stage('Start da nova versao'){
-            dir('/home/ubuntu/github/temperature/build/docker'){
-                sh 'docker build --tag=temperature .' 
-                sh 'docker run -d --name temperature -p 9052:9052 temperature' 
+            dir('build/docker'){
+                sh 'sudo docker build --tag=temperature .' 
+                sh 'sudo docker run -d --name temperature -p 9052:9052 temperature' 
             }
         }
     } catch (e) {
