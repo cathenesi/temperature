@@ -1,7 +1,3 @@
-@Library('jenkins-library') _
-
-properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), disableConcurrentBuilds(), parameters([choice(choices: ['develop', 'producao'], description: '', name: 'branch'), booleanParam(defaultValue: false, description: 'Ao checar essa opção, o job ira baixar o fonte da branch escolhida, rebuildar o código e atualizar os containers nos devidos ambientes. Essa opção requer autenticação.', name: 'Publicar')]), gitLabConnection('Gitlab'), [$class: 'GitlabLogoProperty', repositoryName: '']])
-
 def branchName="master"
 def gitURL="https://github.com/cathenesi/temperature.git"
 node('master'){
@@ -9,27 +5,31 @@ node('master'){
         stage('Iniciar build'){
             deleteDir()
         }
-
-        stage('Clonar repositorio'){
+        
+        stage('Fetch repositório'){
             dir('/home/ubuntu/github/temperature'){
-                sh 'sudo git stash' 
                 sh 'sudo git pull' 
             }
         }
-
+       
         stage('Build do projeto'){
             dir('/home/ubuntu/github/temperature'){
-                sh 'sudo ./gradlew build'
-                sh 'sudo ./gradlew docker'
+                sh 'sudo ./gradlew build' 
+                sh 'sudo ./gradlew docker' 
             }
         }
 
         stage('Stop da aplicação em execucao'){
-            sh 'sudo docker stop temperature'
+            try {
+                sh 'sudo docker stop temperature'
+            } catch (e) {
+                // instancia ja parada
+            }
         }
 
         stage('Start da nova versao'){
             dir('/home/ubuntu/github/temperature/build/docker'){
+                sh 'sudo docker rm temperature'
                 sh 'sudo docker build --tag=temperature .' 
                 sh 'sudo docker run -d --name temperature -p 9052:9052 temperature' 
             }
