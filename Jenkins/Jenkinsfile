@@ -11,6 +11,7 @@ node('master'){
         }
 
         stage('Build do projeto'){
+            sh 'chmod 777 .'
             sh './gradle build'
             sh './gradle docker'
         }
