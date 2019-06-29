@@ -8,7 +8,6 @@ node('master'){
         
         stage('Fetch repositório'){
             dir("${projDir}"){
-                sh 'sudo git stash'
                 sh 'sudo git pull' 
             }
         }
