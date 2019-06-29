@@ -20,7 +20,11 @@ node('master'){
         }
 
         stage('Stop da aplicação em execucao'){
-            sh 'sudo docker stop temperature'
+            try {
+                sh 'sudo docker stop temperature'
+            } catch (e) {
+                // instancia ja parada
+            }
         }
 
         stage('Start da nova versao'){
