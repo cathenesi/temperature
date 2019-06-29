@@ -1,3 +1,5 @@
+def projDir="/home/ubuntu/github/temperature"
+
 node('master'){
     try{
         stage('Iniciar build'){
@@ -5,11 +7,13 @@ node('master'){
         }
         
         stage('Fetch repositório'){
-            checkout scm
+            dir('${projDir}'){
+                sh 'sudo git pull' 
+            }
         }
        
         stage('Build do projeto'){
-            dir('/root/.jenkins/workspace/Fiap-Cloud/build/docker'){
+            dir('${projDir}'){
                 sh 'sudo ./gradlew build' 
                 sh 'sudo ./gradlew docker' 
             }
@@ -24,7 +28,7 @@ node('master'){
         }
 
         stage('Start da nova versao'){
-            dir('/root/.jenkins/workspace/Fiap-Cloud/build/docker'){
+            dir('${projDir}/build/docker'){
                 sh 'sudo docker rm temperature'
                 sh 'sudo docker build --tag=temperature .' 
                 sh 'sudo docker run -d --name temperature -p 9052:9052 temperature' 
