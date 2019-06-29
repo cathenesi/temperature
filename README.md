@@ -36,7 +36,7 @@ A temperatura e humidade é registrada por meio de um programa Python que roda e
 O programa lê os dados por meio de um sensor DHT11:
 ![](DHT11-com-Raspberry.png)
 
-, e public os valores na API.
+, e publica os valores na API.
 
 O programa se encontra no diretório "python", e foi adaptado a partir da referência:
 https://www.filipeflop.com/blog/temperatura-umidade-dht11-com-raspberry-pi/
