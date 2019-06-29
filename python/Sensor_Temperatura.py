@@ -20,7 +20,7 @@ while(1):
     humidity, temperature = Adafruit_DHT.read_retry(sensor, sensor_pin);
 
     if humidity is not None and temperature is not None:
-        data = "{\"temperature-celsius\":" + str(temperature) + ", \"humidity\":" + str(humidity) + "}"
+        data = "{\"temperature\":" + str(temperature) + ", \"humidity\":" + str(humidity) + "}"
         print(data)
         response = requests.post(url, data=data, headers=headers)
         if response.status_code == 200:
