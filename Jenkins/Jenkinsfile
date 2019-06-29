@@ -11,8 +11,8 @@ node('master'){
         }
 
         stage('Build do projeto'){
-            sh 'gradle build'
-            sh 'gradle docker'
+            sh './gradle build'
+            sh './gradle docker'
         }
 
         stage('Stop da aplicação em execucao'){
