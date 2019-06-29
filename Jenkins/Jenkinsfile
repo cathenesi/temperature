@@ -7,17 +7,12 @@ node('master'){
         }
 
         stage('Baixar repositorio'){
-            dir('/home/ubuntu/github/temperature'){
-                sh 'sudo git pull' 
-            }
-            //checkout scm        
+            checkout scm        
         }
 
         stage('Build do projeto'){
-            dir('/home/ubuntu/github/temperature'){
-                sh 'sudo ./gradlew build' 
-                sh 'sudo ./gradlew docker' 
-            }
+             sh 'sudo ./gradlew build' 
+             sh 'sudo ./gradlew docker' 
         }
 
         stage('Stop da aplicação em execucao'){
