@@ -17,7 +17,7 @@ http://ec2-3-88-52-204.compute-1.amazonaws.com:9052/swagger-ui.html
 
 ## Arquitetura cloud AWS - IaaS
 
-![](Web App Reference Architecture.png)
+![](Web-App-Reference-Architecture.png)
 
 - Jenkins roda em uma instância EC2:
 http://ec2-3-88-52-204.compute-1.amazonaws.com:8080
