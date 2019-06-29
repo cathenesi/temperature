@@ -10,10 +10,10 @@ GPIO.setmode(GPIO.BOARD)
 sensor_pin = 25
 
 # url = 'http://httpbin.org/post'
-url = 'http://ec2-34-230-73-23.compute-1.amazonaws.com:9090/home-temperature'
+url = 'http://ec2-3-88-52-204.compute-1.amazonaws.com:9090/temperature'
 headers = {'Content-type': 'application/json'}
 
-print("*** Reading temperature e humidity");
+print("*** Reading temperature and humidity");
 
 while(1):
 
