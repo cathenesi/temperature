@@ -5,7 +5,12 @@ node('master'){
         stage('Iniciar build'){
             deleteDir()
         }
-
+        
+        stage('Fetch repositório'){
+            dir('/home/ubuntu/github/temperature'){
+                sh 'sudo git pull' 
+            }
+        }
        
         stage('Build do projeto'){
             dir('/home/ubuntu/github/temperature'){
@@ -19,7 +24,7 @@ node('master'){
         }
 
         stage('Start da nova versao'){
-            dir('build/docker'){
+            dir('/home/ubuntu/github/temperature/build/docker'){
                 sh 'sudo docker build --tag=temperature .' 
                 sh 'sudo docker run -d --name temperature -p 9052:9052 temperature' 
             }
