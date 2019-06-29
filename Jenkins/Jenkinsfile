@@ -1,4 +1,4 @@
-def projDir="/home/ubuntu/github/temperature"
+def projDir = '/home/ubuntu/github/temperature'
 
 node('master'){
     try{
@@ -7,13 +7,13 @@ node('master'){
         }
         
         stage('Fetch repositório'){
-            dir('${projDir}'){
+            dir("${projDir}"){
                 sh 'sudo git pull' 
             }
         }
        
         stage('Build do projeto'){
-            dir('${projDir}'){
+            dir("${projDir}"){
                 sh 'sudo ./gradlew build' 
                 sh 'sudo ./gradlew docker' 
             }
@@ -28,7 +28,7 @@ node('master'){
         }
 
         stage('Start da nova versao'){
-            dir('${projDir}/build/docker'){
+            dir("${projDir}/build/docker"){
                 sh 'sudo docker rm temperature'
                 sh 'sudo docker build --tag=temperature .' 
                 sh 'sudo docker run -d --name temperature -p 9052:9052 temperature' 
