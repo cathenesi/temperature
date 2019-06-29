@@ -6,10 +6,7 @@ node('master'){
             deleteDir()
         }
 
-        stage('Baixar repositorio'){
-            checkout scm        
-        }
-
+       
         stage('Build do projeto'){
              sh 'sudo ./gradlew build' 
              sh 'sudo ./gradlew docker' 
