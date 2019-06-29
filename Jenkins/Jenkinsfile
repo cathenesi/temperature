@@ -8,8 +8,10 @@ node('master'){
 
        
         stage('Build do projeto'){
-             sh 'sudo ./gradlew build' 
-             sh 'sudo ./gradlew docker' 
+            dir('/home/ubuntu/github/temperature'){
+                sh 'sudo ./gradlew build' 
+                sh 'sudo ./gradlew docker' 
+            }
         }
 
         stage('Stop da aplicação em execucao'){
