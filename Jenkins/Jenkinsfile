@@ -7,12 +7,17 @@ node('master'){
         }
 
         stage('Baixar repositorio'){
-            checkout scm        
+            dir('/home/ubuntu/github/temperature'){
+                sh 'sudo git pull' 
+            }
+            //checkout scm        
         }
 
         stage('Build do projeto'){
-            sh 'sudo ./gradlew build'
-            sh 'sudo ./gradlew docker'
+            dir('/home/ubuntu/github/temperature'){
+                sh 'sudo ./gradlew build' 
+                sh 'sudo ./gradlew docker' 
+            }
         }
 
         stage('Stop da aplicação em execucao'){
@@ -20,9 +25,10 @@ node('master'){
         }
 
         stage('Start da nova versao'){
-            sh 
-            sh 'sudo docker build --tag=temperature .' 
-            sh 'sudo docker run -d --name temperature -p 9052:9052 temperature' 
+            dir('/home/ubuntu/github/temperature/build/docker'){
+                sh 'sudo docker build --tag=temperature .' 
+                sh 'sudo docker run -d --name temperature -p 9052:9052 temperature' 
+            }
         }
     } catch (e) {
         throw e
